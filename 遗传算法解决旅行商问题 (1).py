@@ -20,7 +20,7 @@ m_rate = 0.05  # 突变率
 pop = np.array([])  # 种群数组
 fitness = np.array([])  # 适应度数组
 city_size = -1  # 标记城市数目
-ga_num = 200  # 最大迭代次数
+ga_num = 1000  # 最大迭代次数
 best_dist = -1  # 记录目前最优距离
 best_gen = []  # 记录目前最优旅行方案
 
@@ -262,6 +262,7 @@ tournament_size = 5  # 锦标赛小组大小
 pc = 0.95  # 交叉概率
 pm = 0.1  # 变异概率
 # CityCoordinates=CityCoordinates.drop('city', axis=1)
+
 # 计算城市之间的距离
 dis_matrix = pd.DataFrame(data=None, columns=range(len(CityCoordinates)), index=range(len(CityCoordinates)))
 for i in range(len(CityCoordinates)):
@@ -300,13 +301,13 @@ while iteration <= generation:
     #     child_pops = one_point_crossover(popsize, pop1, pop2, pc)
 
     # Two_Point_Crossover交叉
-    child_pops = two_point_crossover(popsize, pop1, pop2, pc)
+    #child_pops = two_point_crossover(popsize, pop1, pop2, pc)
     # 均匀交叉
-    child_pops = uniform_crossover(popsize, pop1, pop2)
+    #child_pops = uniform_crossover(popsize, pop1, pop2)
     # 循环交叉
     child_pops = cycle_crossover(popsize, pop1, pop2, pc)
     # 使用基于位置的交叉算法对两个父代进行交叉操作
-    child_pops =position_based_crossover(pop1, pop2)
+    #child_pops = position_based_crossover(pop1, pop2)
     # 变异
     child_pops = mutate(child_pops, pm)
     # 计算子代适应度
